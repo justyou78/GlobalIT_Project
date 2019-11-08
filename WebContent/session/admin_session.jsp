@@ -3,7 +3,7 @@
 <%
 		
 		String sessionID = (String) session.getAttribute("id");
-		System.out.println("진입");
+		/*  로그인 여보 확인. */
 		if (sessionID == null) {
 %>
 				<script>
@@ -13,11 +13,12 @@
 <%
 			return;
 		}
+		/* 관리자 로그인 여부 확인 */
 		else{
 			if(!sessionID.equals("admin")){
 				%>
 					<script>
-						alert('비정상적인 접근 방식 입니다.');
+						alert('관리자 권한입니다.');
 						window.location.href='../display/header.jsp';
 					</script>
 				<%

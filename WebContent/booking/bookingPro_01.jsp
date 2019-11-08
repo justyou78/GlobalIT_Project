@@ -72,7 +72,7 @@
 <% 	if(result_2){%>
 <script type="text/javascript">
 	alert("예약완료");
-	location="../display/header.jsp?pgName=bookingCal";
+	location="../display/header.jsp?pgName=bookingConfirmForm";
 </script>
 <%	} %>
 </body>

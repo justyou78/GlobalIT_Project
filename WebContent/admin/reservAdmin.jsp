@@ -8,7 +8,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<jsp:include page="/session/admin_session.jsp"></jsp:include>
 <style type="text/css">
 	.cal{
 		width:120px;
@@ -28,7 +27,6 @@
 	}
 	
 </style>
-
 </head>
 <body>
 	<h1>예약관리페이지</h1>
@@ -122,7 +120,7 @@
 				<td class="check">
 				예약날짜 : <%=member.getYear() %> - <%=member.getMonth() %> - <%=member.getDay() %><br/>
 				예약자 : <%=member.getId() %><br/>
-				예약상태 : <%if(member.getStats() == 0){%>예약불가<br /><%}else if(x == 1){%>예약가능<br /><%}else if(x == 2){%>예약완료<br /><%}else if(x == 3){%>예약진행중<br /><%}else if(x == 4){%>예약취소중<br /><%}else{%>전화문의<br /><%}%>
+				예약상태 : <%if(member.getStats() == 0){%>예약불가<br /><%}else if(member.getStats() == 1){%>예약가능<br /><%}else if(member.getStats() == 2){%>예약완료<br /><%}else if(member.getStats() == 3){%>예약진행중<br /><%}else if(member.getStats() == 4){%>예약취소중<br /><%}else{%>전화문의<br /><%}%>
 				<form action="reservAdminPro.jsp" method="post">
 					<input type="hidden" name="year" value="<%=member.getYear() %>" />
 					<input type="hidden" name="month" value="<%=member.getMonth() %>" />

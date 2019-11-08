@@ -32,8 +32,31 @@
 	//response.sendRedirect("boardView.jsp");
 	
 	
-%>
-	<script>location="../display/header.jsp?pgName=board"</script>
+
+	 
+		String st = request.getParameter("whereBoard");
+		
+		if(st.equals("board")){
+			System.out.println(st+"test");
+			
+			%>
+				<script>location="../display/header.jsp?pgName=boardView&num=<%=num%>&pageNum=<%=pageNum%>"</script>
+			<%
+			
+			
+
+		}
+		else{
+			%>
+			<script>location="../display/header.jsp?pgName=boardView&num=<%=num%>&pageNum=<%=pageNum%>"</script>
+			<%
+			
+			
+		}
+		%>
+		
+		
+	
 
 <body>
 

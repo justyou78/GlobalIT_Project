@@ -12,13 +12,18 @@
 	int num = Integer.parseInt(request.getParameter("num"));
 //	String pageNum = request.getParameter("pageNum");
 	String pw = request.getParameter("pw");
-	
+	String id = (String)session.getAttribute("id");
 	BoardDAO dao = new BoardDAO();
 	int check = dao.delete(num, pw);
 	if(check == 1){
 %>
 	<meta http-equiv="Refresh" content="0;url=../display/header.jsp?pgName=board">	
-		
+		<%   } else if(id.equals("admin")) {
+      System.out.println("게시판 지우기 프로 : idddd : "+id);
+      dao.delete(num);   %>
+   <meta http-equiv="Refresh" content="0;url=../display/header.jsp?pgName=board">   
+      
+   
 <%	} else {%>
 		<script type="text/javascript">
 			alert("비밀번호가 맞지 않습니다.");

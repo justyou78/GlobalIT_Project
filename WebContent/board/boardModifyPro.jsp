@@ -61,12 +61,7 @@
 			history.go(-1);
 		</script>  -->
 <%	//} %>
-
+<meta http-equiv="Refresh" content="0;url=../display/header.jsp?pgName=board">
 <body>
-	수정되었습니다.
-	<img src="/GlobalIT_Pro/save/<%=sys %>"/>
-		
-	<input type="button" value="쓴 글 보기" onclick="document.location.href='../display/header.jsp?pgName=boardView&num=<%=vo.getNum() %>&pageNum=<%=pageNum %>'"/>
-	<input type="button" value="목록보기" onclick="location.href='../display/header.jsp?pgName=board&pageNum=<%=pageNum%>'"/>
 </body>
 </html>

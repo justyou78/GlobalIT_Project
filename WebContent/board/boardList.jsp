@@ -15,6 +15,8 @@
 <%
 	int pageSize = 10;	//보여지는 게시글 수 
 	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");	//날짜,시간을 내가 원하는 방식으로 출력
+	String id = (String) session.getAttribute("id");
+
 %>
 <%
 	String pageNum = request.getParameter("pageNum");	//현재 페이지 넘버
@@ -59,6 +61,10 @@
 		      <th scope="col">제목</th>
 		      <th scope="col">작성자</th>
 		      <th scope="col">작성일</th>
+		      <%if(id.equals("admin")){%>
+            	<th scope="col">관리자권한</th>
+            <%} %>
+		      
 		    </tr>
   </thead>
 <%
@@ -71,6 +77,9 @@
 				<td><a href="header.jsp?pgName=boardView&num=<%=vo.getNum() %>&pageNum=<%=currentPage %>"> <%= vo.getTitle() %></a></td>
 				<td><%= vo.getId() %></td>
 				<td><%= vo.getTime() %></td>
+				<%if(id.equals("admin")){%>
+               <td><button onclick="location='../board/boardAdminPro.jsp?num=<%= vo.getNum() %>&pgName=board'">삭제</button></td>
+            <%} %>
 			</tr>
 	</tbody>
 	<%	}	//for %>

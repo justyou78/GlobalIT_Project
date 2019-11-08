@@ -3,7 +3,7 @@
 <%
 		
 		String sessionID = (String) session.getAttribute("id");
-		System.out.println("진입");
+		/* 로그인 여부 확인 */
 		if (sessionID == null) {
 %>
 				<script>

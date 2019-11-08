@@ -11,35 +11,30 @@
 </head>
 <body>
 <%request.setCharacterEncoding("UTF-8"); %>
+<!--  MemberDTO 생성-->
 <jsp:useBean id="dto" class="globalit_pro.example.dto.MemberDTO"></jsp:useBean>
+<!--  MemberDTO에 변수 초기화-->
 <jsp:setProperty property="*" name="dto"/>
 	<%
-		
+		/*  입력한 비밀번호 변수 초기화*/
 		String origin_pw = request.getParameter("origin_pw");
 		MemberDAO dao= new MemberDAO();
 		
-		String pwCheck = request.getParameter("pwcheck");
-		
+		/* DB에 저장되어있는 비밀번호 초기화 */
 		String pw =dao.getPw(dto.getId());
-		//기존 비밀번호가 일치하는지 확인.
+		//비밀번호 일치여부 확인
 		if(pw.equals(origin_pw)){
-			System.out.println("비밀번호일치");
-			
-			
-				
-			
-			
+				/* 회원정보 업데이트 Method */
 				boolean result =dao.updateUser(dto);
+				/*  성공시 */
 				if(result){
-					System.out.println("리설트 진입");
-					
-					
 					%>
 					<script> alert("변경에 성공하셨습니다.");
-						window.location="main.jsp";
+						window.location="../display/header.jsp";
 					</script>
 					<%
 				}
+				/* 정보 업데이트 오류시 */
 				else{
 					%>
 					<script> alert("오류가 발생하였습니다 다시 시도해주세요")
@@ -51,6 +46,7 @@
 			
 		
 		}
+		/* 입력한 비밀번호가 일치하지 않을 때 */
 		else{
 			%>
 				<script>

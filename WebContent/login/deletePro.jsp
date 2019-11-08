@@ -13,24 +13,21 @@
 <body>
 <%
 	request.setCharacterEncoding("UTF-8");
+	/*  폼에서 입력한 비밀번호 */
 	String getPw = request.getParameter("pw");
 	
-	
+	/*  MemberDAO객체 생성*/
 	MemberDAO dao = new MemberDAO();
 	
 	
-	
+	/*  DB에 저장되어 있는 비밀번호 초기화*/
 	String pw = dao.getPw((String)session.getAttribute("id"));
 	String id =(String)session.getAttribute("id"); 
-	//비밀번호 일치하는지 확인
-	System.out.println(pw+"여기여기");
-	System.out.println(id+"여기여기");
-	
+	/*  입력한 비밀번호와 기존 비밀번호 일치여부 확인*/	
 	if(pw.equals(getPw)){
 		
 		//쿠키 지워주기.
 		Cookie[] cookies = request.getCookies();
-		Cookie cooid =null, coopw =null;
 		for(int i = 0; i<cookies.length; i++){
 			if(cookies[i].getName().equals("id")){
 				cookies[i].setMaxAge(0);
@@ -41,15 +38,11 @@
 		//세션지워주기
 		session.invalidate();
 		
-		//db에서 삭제.
-		System.out.println("진입");
+		//DB에서 계정 삭제.
 		boolean result =new MemberDAO().deleteMember(id);
-		System.out.println("탈출");
 		
-		
+		/*  계정 삭제 성공 */
 		if(result){
-			
-					
 			%>
 			<script>
 				alert("삭제완료");
@@ -58,8 +51,8 @@
 			</script>
 			<%
 		}
+		/*  DAO처리 문제 발생시 */
 		else{
-			System.out.println("리설트02");
 			%>
 			<script>
 				alert("에러발생 다시시도해주세요.");
@@ -70,8 +63,8 @@
 		}
 		
 	}
+	//비밀번호 불일치
 	else{
-		//비밀번호 불일치
 		%>
 		<script>
 			alert("비밀번호가 일치하지 않습니다");

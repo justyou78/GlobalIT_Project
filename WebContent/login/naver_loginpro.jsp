@@ -47,35 +47,33 @@
 		/* (3) 네아로 로그인 정보를 초기화하기 위하여 init을 호출 */
 		naverLogin.init();
 
-		/* (4) Callback의 처리. 정상적으로 Callback 처리가 완료될 경우 main page로 redirect(또는 Popup close) */
+		/* Callback의 처리. 정상적으로 Callback 처리가 완료될 경우 main page로 redirect(또는 Popup close) */
 		window.addEventListener('load', function () {
 			naverLogin.getLoginStatus(function (status) {
 				if (status) {
+				
 					var email = naverLogin.user.getEmail();
 					var name = naverLogin.user.getNickName();
 					var profileImage = naverLogin.user.getProfileImage();
 					var uniqId = naverLogin.user.getId();
-					/* (5) 필수적으로 받아야하는 프로필 정보가 있다면 callback처리 시점에 체크 */
-				
-					
-					
-					
+					/* 필수적으로 받아야하는 프로필 정보가 있다면 callback처리 시점에 체크 */
+					/* 이메일을 필수로 받기 위한 코드 */
 					if( email == undefined || email == null) {
 						alert("이메일은 필수정보입니다. 정보제공을 동의해주세요.");
-						/* (5-1) 사용자 정보 재동의를 위하여 다시 네아로 동의페이지로 이동함 */
+						/* 사용자 정보 재동의를 위하여 다시 네아로 동의페이지로 이동함 */
 						naverLogin.reprompt();
 						return;
 					}
+					/*  hidden type input에 데이터 설정.*/
 					document.form01.export_email.value = email;
 					document.form01.export_nickname.value = name;
 					document.form01.export_id.value = uniqId;
 					document.form01.where.value = 2;
 					
-
+					/* loginpro.jsp로 이동 */
 					document.form01.submit();
-
-					//window.location.replace("http://localhost:80/GlobalIT_Pro/login/main.jsp");
-				
+					
+					/* 에러 발생 */
 				} else {
 					console.log("callback 처리에 실패하였습니다.");
 				}

@@ -58,20 +58,8 @@
 	
 	//System.out.println("file f : " + f);
 %>
-
+<meta http-equiv="Refresh" content="0;url=../display/header.jsp?pgName=notice">
 <body>
-	글쓰기 완료 <br/>
-	filename = <%= filename %>
-	org = <%=org %><br/>
-	sys = <%= sys %><br/>
-	type = <%= type %><br/>
-	path = <%= path %><br/>
-	f = <%=f %>
-	<img src="/holiday/save/<%=sys%>"/>
-	<% if(notice == 0){ %>
-		<input type="button" value="게시글 목록보기" onclick="location.href='../display/header.jsp?pgName=board'"/><!-- 게시글 -->
-	<%} else{ %>
-		<input type="button" value="공지사항 목록보기" onclick="location.href='../display/header.jsp?pgName=notice'"/><!-- 공지사항 -->
-	<%} %>
+
 </body>
 </html>

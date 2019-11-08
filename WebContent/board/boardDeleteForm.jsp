@@ -19,13 +19,13 @@
 				<td>비밀번호 입력하기</td>
 			</tr>
 			<tr>
-				<td><input type="password" name="pw" placeholder="비밀번호"/>
+				<td><input   type="password" name="pw" placeholder="비밀번호"/>
 					<input type="hidden" name="num" value="<%=num%>"/>
 				</td>
 			</tr>
 			<tr>
-				<td><input type="submit" value="글삭제" />
-					<input type="button" value="글목록"
+				<td><input class="btn btn-warning" type="submit" value="글삭제" />
+					<input  class="btn btn-warning" type="button" value="글목록"
 						onclick="location.href='header.jsp?pgName=board'"/>
 				</td>
 			</tr>

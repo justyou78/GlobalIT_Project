@@ -18,8 +18,6 @@
 		padding: 10px;
 	}
 </style>
-<jsp:include page="/session/admin_session.jsp"></jsp:include>
-
 </head>
 <%
 	String str = request.getParameter("page") == null ? "" : request.getParameter("page");
@@ -31,6 +29,9 @@
 		*<a href="mainAdmin.jsp?page=reservAdmin">예약관리</a>
 		*<a href="mainAdmin.jsp?page=boardAdmin">게시판관리</a>
 		*<a href="mainAdmin.jsp?page=memberAdmin">회원관리</a>
+		*<a href="mainAdmin.jsp?page=todayAdmin">오늘할일</a>
+		*<a href="mainAdmin.jsp?page=facility_room">방추가</a>
+		*<a href="mainAdmin.jsp?page=facility_other">주변시설추가</a>
 	</nav>
 	<section>
 		<%if(str.equals("revenue")){%>
@@ -45,6 +46,12 @@
 			<jsp:include page="boardAdminView.jsp" />
 		<%}else if(str.equals("memberAdminInfo")){ %>
 			<jsp:include page="memberAdminInfo.jsp" />
+		<%}else if(str.equals("todayAdmin")){ %>
+			<jsp:include page="todayAdmin.jsp" />
+		<%}else if(str.equals("facility_room")){ %>
+			<jsp:include page="facility/facility_room.jsp" />	
+		<%}else if(str.equals("facility_other")){ %>
+			<jsp:include page="facility/facility_other.jsp" />	
 		<%}else{ %>
 			<jsp:include page="homeAdmin.jsp" />
 		<%} %>

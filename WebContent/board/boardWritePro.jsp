@@ -57,16 +57,7 @@
 	
 	//System.out.println("file f : " + f);
 %>
-
+<meta http-equiv="Refresh" content="0;url=../display/header.jsp?pgName=board">
 <body>
-	글쓰기 완료 <br/>
-	filename = <%= filename %>
-	org = <%=org %><br/>
-	sys = <%= sys %><br/>
-	type = <%= type %><br/>
-	path = <%= path %><br/>
-	f = <%=f %>
-	<img src="/holiday/save/<%=sys%>"/>
-	<input type="button" value="목록보기" onclick="location.href='../display/header.jsp?pgName=board'"/>
 </body>
 </html>

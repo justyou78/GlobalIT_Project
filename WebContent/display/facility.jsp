@@ -1,65 +1,27 @@
+<%@page import="globalit_pro.example.dto.FacilityVO"%>
+<%@page import="java.util.List"%>
+<%@page import="globalit_pro.example.dao.FacilityDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<title>주변시설</title>
+<title>관광지</title>
+<style>
 
-	<div id="details">
-		<div>
-			<img src="../image/a1.jpg" />
-		</div>
+</style>
 
-		<h3>강화역사박물관</h3>
-		<hr>
-		<p>강화역사박물관은 2010년에 개관하여 세계문화유산으로<br />
-		 지정된 강화 부근리 지석묘 앞에 위치합니다.<br />
-		선사시대부터 근현대까지 강화도에서 출토된 유물들을 중심으로 전사, 보존, 연구하고 있습니다.<br />
-		조상들이 남긴 소중한 유물들을 모아 전시, 교육, 문화행사를 하고 있습니다.</p><br />
-		
-		<img src="../image/a2.jpg" />
-		
-		<h3>강화지석묘</h3>
-		<hr>
-		<p>지석묘란 청동기시대 사람들이 만든 무덤으로 고인돌이라고 하며,<br />
-		지상에 책상처럼 세운 탁자식(북방식)과<br />
-		큰 돌을 조그만 받침돌로 고이거나 판석만을 놓은 바둑판식(남방식)이 있습니다.<br />
-		강화군 하점면 부군에는 40여 기의 고인돌이 있는데,<br />
-		이 중 부근리 고인돌이라 부르는 규모가 큰 탁자식 고인돌이 1964년 사적으로 지정되었습니다.</p><br />
-		
-		<img src="../image/a3.jpg" />
-		
-		<h3>강화곤충박물관</h3>
-		<hr>
-		<p>학생들에게 곤충에 관한 자연탐구학습을 할 수 있도록 기회를 제공하고,<br />
-		표본전시실 및 사육 생태실을 운용하여 연중관람할 수 있습니다.<br />
-		곤충을 직접 사육하거나 구입할 수 도 있으며, 곤충에 관한 정보를 제공하고,<br />
-		곤충과 관련된 용품을 판매하기도 합니다.</p><br />
-		
-		<img src="../image/a4.jpg" />
-		
-		<h3>고려궁지</h3>
-		<hr>
-		<p>고려궁지는 지금으로 부터 760여년전 몽고의 침입을 방어하기 위해<br />
-		고려왕조가 강화도로 피난했을 당시 임금님이 거쳐하시던 궁궐로<br />
-		이곳에서 약 39년간(1232 ~ 1270) 몽고에 항쟁하였습니다.</p><br />
-
-		<img src="../image/a5.jpg" />
-		
-		<h3>고인돌광장</h3>
-		<hr>
-		<p>강화고인물유적은 2002.12.2 유네스코로부터 세계문화유산으로 공식등록되었고,<br />
-		강화도의 각종 축제가 열리는 장소입니다.</p><br />
-		
-		<img src="..//image/a6.jpg" />
-		
-		<h3>외포리선착장</h3>
-		<hr>
-		<p>석모도를 가기 위한 외포리 선착장은 30분에 한번씩 운행이 되며,<br />
-		배를 타고 가는 도중에 행인들의 새우깡 서비스에 갈매기들이 모여드는<br />
-		진풍경을 볼 수 있습니다.</p><br />
-		
-		<img src="../image/a7.jpg" />
-		
-		<h3>강화화문석체험</h3>
-		<hr>
-		<p>강화의 완초를 이용하여 전통 화문석의 제조를 학습하는 곳입니다.<br />
-		단순 학습으로 끝나는 것에 그치지 않고, <br />
-		직접 실생활에서 활용까지 가능하도록 프로그램이 마련되어 있습니다.</p>
+<%
+	FacilityDAO dao1 = new FacilityDAO();
+	List<FacilityVO> list1 = null;
+	String name = null;
+%>
+<body>	
+<%
+	name = "관광지"; 
+	list1 =  dao1.select_other(name);
+	System.out.println(list1);
+	for(FacilityVO vo : list1){%>
+		<h3><%= vo.getTitle()%></h3>
+		<p><%= vo.getSubtitle()%></p> 
+		<img src="../admin/facility/picture/<%= vo.getFilename()%>">
+<%}
+%>
+</body>

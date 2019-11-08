@@ -9,6 +9,12 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <%@include file="/session/check_session.jsp"  %> 
+	<style>
+		.dd{
+		font-weight: bold;
+		font-size: 20pt;
+		}
+	</style>
 </head>
 <body>
 <%
@@ -69,7 +75,12 @@
 			dateCOM = cal.compareTo(caltoday); // 오늘날짜보다 전일경우 -1
 			dateCOM_2 = cal.compareTo(caltoday_2); // 60일이후 날짜보다 전일경우 -1
 			if((dateCOM == 1 || dateCOM == 0) && dateCOM_2 == -1){
-				%><a href="header.jsp?pgName=bookingCal&year=<%=cal.get(Calendar.YEAR)%>&month=<%=cal.get(Calendar.MONTH)+1%>&day=<%=cal.get(Calendar.DATE)%>"><%=cal.get(Calendar.DATE) %></a><%
+				%>
+						<%if(cal.get(Calendar.DATE) == date){%>
+		                  <a href="../display/header.jsp?pgName=bookingCal&year=<%=cal.get(Calendar.YEAR)%>&month=<%=cal.get(Calendar.MONTH)+1%>&day=<%=cal.get(Calendar.DATE)%>" class="dd"><%=cal.get(Calendar.DATE) %></a>
+		            <%}else{%>
+		                  <a href="../display/header.jsp?pgName=bookingCal&year=<%=cal.get(Calendar.YEAR)%>&month=<%=cal.get(Calendar.MONTH)+1%>&day=<%=cal.get(Calendar.DATE)%>"><%=cal.get(Calendar.DATE) %></a>
+		            <%}		
 			}else if(dateCOM == -1){
 				%><%=cal.get(Calendar.DATE) %><%
 			}else{

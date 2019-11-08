@@ -20,7 +20,7 @@
 	String month = request.getParameter("month");	//월
 	String day = request.getParameter("day") == null ? null : request.getParameter("day");		//일
 	String room_num = request.getParameter("room_num");	//방번호
-	String id = request.getParameter("id");
+	String id =(String)session.getAttribute("id");
 	int stats=0;	//예약 상태 유무 1= 예약 가능
 %>
 
@@ -57,79 +57,144 @@
   	
  
  	/* 1번방 : 페가수스에서 머물 때 */
- 	function select1(){	
- 		var stayDay1 = document.getElementById('stayDay1').value;
- 		var fee1 = document.getElementById('fee1').value;
- 		price1 = stayDay1 * fee1;
- 		document.getElementById("money1").value = price1; 	
- 		totalPrice();
- 	}
-	
- 	/* 2번방 : 오리온에서 머물 때 */
-  	function select2(){
- 		var stayDay2 = document.getElementById('stayDay2').value;
- 		var fee2 = document.getElementById('fee2').value;
- 		price2 = stayDay2 * fee2;
- 		document.getElementById('money2').value = price2;
- 		totalPrice();
- 	}
- 	
-  	/* 3번방 : 카시오페아에서 머물 때 */
-  	function select3(){
-  		var stayDay3 = document.getElementById('stayDay3').value;
-  		var fee3 = document.getElementById('fee3').value;
-  		price3 = stayDay3 * fee3;
-  		document.getElementById('money3').value = price3;
-  		totalPrice();
-  	}
-  	
- 	/* 전체 요금 */
- 	function totalPrice(){
- 		
- 		
-	 		//방1
-	 		var stayDay1 = document.getElementById('stayDay1').value;
-	 		var fee1 = document.getElementById('fee1').value;
-	 		
-	 		console.log(stayDay1);
-	 		console.log(fee1);
-	 		
-	 		if(room1.checked){
-	 			price1 = stayDay1 * fee1;
-	 		}
-	 		else{
-	 			price1 = 0;
-	 		}
- 			
-	 		//방2
-	 		var stayDay2 = document.getElementById('stayDay2').value;
-	 		var fee2 = document.getElementById('fee2').value;
-	 		
-	 		console.log(stayDay2);
-	 		console.log(fee2);
-	 		
-			if(room2.checked){
-				price2 = stayDay2 * fee2;
-	 		}
-	 		else{
-	 			price2 = 0;
-	 		}
-	 		//방3
-	 		var stayDay3 = document.getElementById('stayDay3').value;
-	 		var fee3 = document.getElementById('fee3').value;
-	 		
-	 		console.log(stayDay3);
-	 		console.log(fee3);
-	 		
-	 		if(room3.checked){
-	 			price3 = stayDay3 * fee3;
-	 		} else{
-	 			price3 = 0;
-	 		}
- 		
-	 		document.getElementById('totalMoney').value = (price1+price2+price3);		
-	
- 	}//totalPrice()
+ 	function select1(){   
+       var stayDay1 = document.getElementById('stayDay1').value;   //숙박기간
+       var fee1 = document.getElementById('fee1').value;         // 이용요금
+       var adult1 = document.getElementById('adult1');      //성인 인원수
+       var adultVal = adult1.options[adult1.selectedIndex].value;
+       var plusFee1;
+      if(adultVal > 15){
+         for(var i = 15; i < adultVal; i++){
+            plusFee1 = (adultVal-15)*10000;
+         }
+      } else{
+         plusFee1 = 0;
+      }
+       
+       price1 = stayDay1 * fee1 + plusFee1;   //숙박기간 * 이용요금 = 값
+       document.getElementById("money1").value = price1;    
+       totalPrice();
+    }
+    
+    
+    /* 2번방 : 오리온에서 머물 때 */
+     function select2(){
+       var stayDay2 = document.getElementById('stayDay2').value;
+       var fee2 = document.getElementById('fee2').value;
+       var adult2 = document.getElementById('adult2');      //성인 인원수
+       var adultVal = adult1.options[adult2.selectedIndex].value;
+       var plusFee2;
+      if(adultVal > 10){
+         for(var i = 10; i < adultVal; i++){
+            plusFee2 = (adultVal-10)*10000;
+         }
+      } else{
+         plusFee2 = 0;
+      }
+      
+       price2 = stayDay2 * fee2 + plusFee2;
+       document.getElementById('money2').value = price2;
+       totalPrice();
+    }
+    
+     /* 3번방 : 카시오페아에서 머물 때 */
+     function select3(){
+        var stayDay3 = document.getElementById('stayDay3').value;
+        var fee3 = document.getElementById('fee3').value;
+        var adult3 = document.getElementById('adult3');      //성인 인원수
+       var adultVal = adult1.options[adult3.selectedIndex].value;
+       var plusFee3;
+      if(adultVal > 10){
+         for(var i = 10; i < adultVal; i++){
+            plusFee3 = (adultVal-10)*10000;
+         }
+      } else{
+         plusFee3 = 0;
+      }
+      
+        price3 = stayDay3 * fee3 + plusFee3;
+        document.getElementById('money3').value = price3;
+        totalPrice();
+     }
+    
+    
+     
+    /* 전체 요금 */
+    function totalPrice(){
+       
+       
+          //방1
+          var stayDay1 = document.getElementById('stayDay1').value;
+          var fee1 = document.getElementById('fee1').value;
+          var adult1 = document.getElementById('adult1');      //성인 인원수
+          var adultVal = adult1.options[adult1.selectedIndex].value;
+          var plusFee1;
+         if(adultVal > 15){
+            for(var i = 15; i < adultVal; i++){
+               plusFee1 = (adultVal-15)*10000;
+            }
+         } else{
+            plusFee1 = 0;
+         }
+         
+          console.log(stayDay1);
+          console.log(fee1);
+          
+          if(room1.checked){
+             price1 = stayDay1 * fee1 + plusFee1;
+          }
+          else{
+             price1 = 0;
+          }
+          
+          
+          //방2
+          var stayDay2 = document.getElementById('stayDay2').value;
+          var fee2 = document.getElementById('fee2').value;
+          var adult2 = document.getElementById('adult2');      //성인 인원수
+          var adultVal = adult2.options[adult2.selectedIndex].value;
+          var plusFee2;
+         if(adultVal > 10){
+            for(var i = 10; i < adultVal; i++){
+               plusFee2 = (adultVal-10)*10000;
+            }
+         } else{
+            plusFee2 = 0;
+         }
+          console.log(stayDay2);
+          console.log(fee2);
+          
+         if(room2.checked){
+            price2 = stayDay2 * fee2 + plusFee2;
+          }
+          else{
+             price2 = 0;
+          }
+          //방3
+          var stayDay3 = document.getElementById('stayDay3').value;
+          var fee3 = document.getElementById('fee3').value;
+          var adult3 = document.getElementById('adult3');      //성인 인원수
+          var adultVal = adult3.options[adult3.selectedIndex].value;
+          var plusFee3;
+         if(adultVal > 10){
+            for(var i = 10; i < adultVal; i++){
+               plusFee3 = (adultVal-10)*10000;
+            }
+         } else{
+            plusFee3 = 0;
+         }
+          console.log(stayDay3);
+          console.log(fee3);
+          
+          if(room3.checked){
+             price3 = stayDay3 * fee3 + plusFee3;
+          } else{
+             price3 = 0;
+          }
+       
+          document.getElementById('totalMoney').value = (price1+price2+price3);      
+   
+    }//totalPrice()
  
  	// 유효성 검사	
 	function checkSM() {
@@ -153,8 +218,8 @@
 <%}else{ %>
 <h1>예약페이지</h1>
 <%} %>
-<form action="bookingPro_01.jsp" method="post" name="form01" onsubmit="return checkSM()">
-	아이디 : <input type="text" name="id" value="<%=id %>"/><br />
+<form action="../booking/bookingPro_01.jsp" method="post" name="form01" onsubmit="return checkSM()">
+	<input type="hidden" name="id" value="<%=id%>"/>
 	<input type="hidden" name="year" value="<%=year %>"/>
 	<input type="hidden" name="month" value="<%=month %>"/>
 	<input type="hidden" name="day" value="<%=day %>"/>
@@ -196,7 +261,7 @@
 				<% } %>
 				</select>
 			</td>
-			<td>성인 <select name="adult">
+			<td>성인 <select name="adult" id="adult1" onchange="select1()">
 				<% for(int i= 0; i<=15; i++){ %>
 				<option value="<%= i %>"><%= i %></option>
 				<%} %>
@@ -242,7 +307,7 @@
 				<% } %>
 				</select>
 			</td>
-				<td>성인 <select name="adult">
+				<td>성인 <select name="adult" id="adult2" onchange="select2()">
 				<% for(int i= 0; i<=15; i++){ %>
 				<option value="<%= i %>"><%= i %></option>
 				<%} %>
@@ -289,7 +354,7 @@
 				</select>
 			</td>
 			
-			<td>성인 <select name="adult">
+			<td>성인 <select name="adult" id="adult3" onchange="select3()">
 				<% for(int i= 0; i<=15; i++){ %>
 				<option value="<%= i %>"><%= i %></option>
 				<%} %>
@@ -314,9 +379,10 @@
 		
 		
 	</table>
-	<h3>전체 요금 : <input type="text" id="totalMoney" value="" placeholder="0" readonly/></h3>
-				
+	<div class="float-right">
+	전체 요금 : <input type="text" id="totalMoney" value="" placeholder="0" readonly/> <input class="btn btn-danger"  type="submit" value="예약"/>
+	</div>			
 	<br/><br/><br/><br/>
-	<input type="submit" value="예약"/>
+	
 </form>
 </html>
