@@ -35,32 +35,37 @@
 	<div class="container">
 		<h1 class="text-center" style="margin-top: 30px;">회원가입</h1>
 		<!-- 회원가입 폼 -->
-		<form action="joinPro.jsp" method="post" name="userinput">  <!-- joinPro 페이지에서 회원가입 처리  -->
+		<form action="joinPro.jsp" method="post" name="userinput">
+			<!-- joinPro 페이지에서 회원가입 처리  -->
 			<table class="table table-bordered  text-center"
 				style="margin-top: 60px;">
 				<tr>
 					<td>아이디</td>
-					<td><input type="text" name="id" /></td> <!-- 아이디  -->
+					<td><input type="text" name="id" /></td>
+					<!-- 아이디  -->
 				</tr>
 				<tr>
 					<td>비밀번호</td>
-					<td><input type="password" name="pw" /></td> <!-- 비밀번호  -->
+					<td><input type="password" name="pw" /></td>
+					<!-- 비밀번호  -->
 
 				</tr>
 				<tr>
 					<td>비밀번호 확인</td>
-					<td><input type="password" name="pwCheck" /></td> <!-- 비밀번혹확인  -->
+					<td><input type="password" name="pwCheck" /></td>
+					<!-- 비밀번혹확인  -->
 
 				</tr>
 				<tr>
 					<td>전화번호</td>
-					<td><input type="text" name="callnumber" /></td>  <!-- 전화번호  -->
+					<td><input type="text" name="callnumber" /></td>
+					<!-- 전화번호  -->
 				</tr>
 				<tr>
 					<td>이름</td>
-					<td><input type="text" name="name" /></td>  <!-- 이름 -->
+					<td><input type="text" name="name" /></td>
+					<!-- 이름 -->
 				</tr>
-
 			</table>
 			<div class="float-right">
 				<input type="submit" value="회원가입" class="btn btn-primary" />

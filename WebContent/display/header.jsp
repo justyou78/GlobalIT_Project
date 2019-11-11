@@ -94,8 +94,7 @@
 				}
 			%>
 			<!-- 로그인 성공시 이름을 출력하고 각 회원정보수정 및 로그아웃 버튼 생성 -->
-			<span class="text-white "><strong><%=memberDto.getName()%>님
-					반갑습니다</strong></span>
+			<span class="text-white "><strong><%=memberDto.getName()%>님 반갑습니다</strong></span>
 			<button type="button"
 				class="btn  btn-sm text-white btn-outline-info float-right"
 				onclick="ChangeInfo()" height="50px">회원정보수정</button>
@@ -164,7 +163,7 @@
 					<a class="btn dropdown-toggle" href="#" role="button"
 						id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
 						aria-expanded="false"> 부대시설 </a>
-		
+
 					<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
 						<!--  부대시설 페이지로 이동-->
 						<a class="dropdown-item" href="header.jsp?pgName=amenities">부대시설</a>
@@ -231,8 +230,6 @@
 
 			if (pgName == null || pgName.equals("main_Slide")) {
 		%>
-
-
 		<jsp:include page="main_Slide.jsp"></jsp:include>
 		<%
 			} else if (pgName.equals("board")) {
